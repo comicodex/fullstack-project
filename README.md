@@ -8,13 +8,6 @@ This is a collaborative team project to put together and deploy a flask applicat
 * [Lorenzo](https://github.com/lorenzodemiri)
 * [Agnese](https://github.com/comicodex)
 
-### Team
-
-* [Lorenzo](https://github.com/lorenzodemiri)
-* [Kim](https://github.com/KimberleyTaylor)
-* [Agense](https://github.com/comicodex)
-
-
 ### Framework used
 * [Pytorch](https://pytorch.org)
 * [Flask](https://flask.palletsprojects.com)
