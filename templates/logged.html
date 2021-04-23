@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %} 
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Hello {{session['username']}}</h1>
+            <form method=POST enctype="multipart/form-data">
+                <div class="custom-file">
+                    <label class="custom-file-label" for="validatedCustomFile">Choose a file and get a prediction...</label>
+                </div>
+                {{form.csrf_token}}
+                {{ form.image }}
+                <button type="submit" class="btn btn-primary btn-block">Upload</button>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}
