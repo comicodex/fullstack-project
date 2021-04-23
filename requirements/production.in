@@ -6,3 +6,4 @@ numpy
 torch
 torchvision
 bcrypt
+python-telegram-bot
