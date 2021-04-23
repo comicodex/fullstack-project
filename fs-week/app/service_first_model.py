@@ -15,9 +15,9 @@ import logging
 from flask import Flask, jsonify, request
 
 
-MODELS_DIR = Path("models")
-ASSETS_DIR = Path("assets")
-MODEL_NAME = "best_model.pth"
+MODELS_DIR = Path("../models")
+ASSETS_DIR = Path("../assets/class2idx_first_model.json")
+MODEL_NAME = "first_model.pth"
 
 
 log = logging.getLogger()
@@ -41,15 +41,14 @@ def load_model():
     for param in model.parameters():
         param.requires_grad = False
 
-    device = torch.device( "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     model = model.to(device)
 
-    class2idx = json.loads(Path(ASSETS_DIR / "class2idx.json").read_text())
+    class2idx = json.loads(Path(ASSETS_DIR).read_text())
     idx2class = {v: k for k, v in class2idx.items()}
 
-    model.load_state_dict(torch.load(
-        "/home/lorenzo/Desktop/fullstack_v3/fs-week/scripts/best_model.pth"))
+    model.load_state_dict(torch.load(MODELS_DIR / MODEL_NAME))
 
     model = model.eval()
 
@@ -93,8 +92,8 @@ def transform_image(image_bytes):
 
 
 def get_prediction(image_bytes):
-    model = load_model()[0]
-    idx2class = load_model()[1]
+    model, idx2class = load_model()
+    # idx2class = load_model()[1]
     tensor = transform_image(image_bytes=image_bytes)
     outputs = model.forward(tensor)
     _, y_hat = outputs.max(1)
@@ -103,7 +102,7 @@ def get_prediction(image_bytes):
 
 
 if __name__ == "__main__":
-    app.run(port=5010)
+    app.run()
 
 
 # run with

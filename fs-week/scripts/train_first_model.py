@@ -28,15 +28,15 @@ load_dotenv(".env")
 
 def download_data():
 
-    if "data.zip" not in os.listdir():
+    if "../data/first_model_data.zip" not in os.listdir():
         r = requests.get(
             "https://github.com/polyrand/strive-ml-fullstack-public/blob/main/06_org_documentation_scripting/data.zip?raw=true"
         )
 
-        with open("data.zip", "wb") as f:
+        with open("../data/first_model_data.zip", "wb") as f:
             f.write(r.content)
 
-    with zipfile.ZipFile("data.zip", "r") as zip_ref:
+    with zipfile.ZipFile("../data/first_model_data.zip", "r") as zip_ref:
         zip_ref.extractall("data")
 
 
@@ -61,13 +61,13 @@ def get_dataloaders():
         ),
     }
 
-    data_dir = "/home/lorenzo/Desktop/fullstack_v2/fs-week/scripts/data/hymenoptera_data"
+    data_dir = "../data/first_model_data"
     image_datasets = {
         x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x])
         for x in ["train", "val"]
     }
 
-    with open("../assets/class2idx.json", "w") as f:
+    with open("../assets/class2idx_first_model.json", "w") as f:
         f.write(json.dumps(image_datasets["train"].class_to_idx))
 
     dataloaders = {
@@ -85,7 +85,7 @@ def get_dataloaders():
         "dataloaders": dataloaders,
     }
 
-
+#"cuda:0" if torch.cuda.is_available()
 device = torch.device("cpu")
 
 
@@ -161,9 +161,9 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=10):
     )
     print("Best val Acc: {:4f}".format(best_acc))
 
-    # load best model s
+    # load best model weights
     model.load_state_dict(best_model_wts)
-    torch.save(model.state_dict(), "best_model.pth")
+    torch.save(model.state_dict(), "../models/first_model.pth")
     return model
 
 
