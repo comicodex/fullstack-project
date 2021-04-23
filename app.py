@@ -55,18 +55,29 @@ def logged():
                 print("ASKING")
                 
                 resp = requests.post(
-                    "http://127.0.0.1:5010/predict", files={"file": imgBt})
+                    "http://127.0.0.1:5002/predict", files={"file": imgBt})
                 print(resp)
                 resp.raise_for_status()
                 result_class = resp.json()
                 print(result_class)
-                path = file.save(os.path.join(
-                    app.config['UPLOAD_FOLDER'], filename))
-                full_filename = os.path.join(
-                    app.config['UPLOAD_FOLDER'], filename)
-                print(full_filename, path)
-                
-                return render_template('result.html', result_class=result_class, user_image = full_filename)
+                if str(result_class) != 'random':
+                    print("NOT RANDOM")
+                    resp = requests.post(
+                        "http://127.0.0.1:5009/predict", files={"file": imgBt})
+                    print(resp)
+                    resp.raise_for_status()
+                    result_class = resp.json()
+                    print(result_class)
+                    file.save(os.path.join(
+                        app.config['UPLOAD_FOLDER'], filename))
+                    full_filename = os.path.join(
+                        app.config['UPLOAD_FOLDER'], filename)
+                    
+                    print(full_filename)
+                    
+                    return render_template('result.html', result_class=result_class, user_image = full_filename)
+                else:
+                    return "Please try with another photo containing bees or ants"
         return render_template('logged.html', form=form)
     return render_template('index.html')
 
@@ -110,4 +121,4 @@ def register():
 
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5000)
