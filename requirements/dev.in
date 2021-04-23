@@ -2,6 +2,7 @@ mkdocs
 flake8
 pip-tools
 pymongo
+python-telegram-bot
 pytest
 mkdocs-material
 bcrypt
