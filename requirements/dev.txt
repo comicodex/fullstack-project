@@ -4,10 +4,14 @@
 #
 #    pip-compile --output-file=requirements/dev.txt requirements/dev.in
 #
+apscheduler==3.6.3
+    # via python-telegram-bot
 attrs==20.3.0
     # via pytest
 bcrypt==3.2.0
     # via -r requirements/dev.in
+certifi==2020.12.5
+    # via python-telegram-bot
 cffi==1.14.5
     # via bcrypt
 click==7.1.2
@@ -76,12 +80,20 @@ pyparsing==2.4.7
     # via packaging
 pytest==6.2.3
     # via -r requirements/dev.in
+python-telegram-bot==13.4.1
+    # via -r requirements/dev.in
+pytz==2021.1
+    # via
+    #   apscheduler
+    #   python-telegram-bot
+    #   tzlocal
 pyyaml==5.4.1
     # via mkdocs
 regex==2021.4.4
     # via nltk
 six==1.15.0
     # via
+    #   apscheduler
     #   bcrypt
     #   livereload
     #   lunr
@@ -93,8 +105,12 @@ tornado==6.1
     # via
     #   livereload
     #   mkdocs
+    #   python-telegram-bot
 tqdm==4.60.0
     # via nltk
+tzlocal==2.1
+    # via apscheduler
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
+# setuptools
