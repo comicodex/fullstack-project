@@ -6,7 +6,7 @@ from wtforms import FileField
 import os
 import bcrypt
 import requests
-from config import MONGODB_NAME, MONGO_URI, SECRET_KEY, ALLOWED_EXTENSIONS, UPLOAD_FOLDER
+from config_on import  MONGO_URI, ALLOWED_EXTENSIONS, UPLOAD_FOLDER
 import uuid
 from werkzeug.utils import secure_filename
 
