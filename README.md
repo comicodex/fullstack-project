@@ -16,6 +16,8 @@ This is a collaborative team project to put together and deploy a flask applicat
 * [ResNet18](https://https//pytorch.org/hub/pytorch_vision_resnet/)
 * [MkDocs](https://www.mkdocs.org/)
 
+### Documentation
+[Click here](https://comicodex.github.io/fullstack-project/)
 ### ResNet18 Architecture
 
 ![](resArchitecture.png)
