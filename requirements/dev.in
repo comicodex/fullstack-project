@@ -1,0 +1,7 @@
+mkdocs
+flake8
+pip-tools
+pymongo
+pytest
+mkdocs-material
+bcrypt
