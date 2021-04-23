@@ -1,0 +1,17 @@
+site_name: Agnese - Kim - Lorenzo
+repo_url: https://github.com/comicodex/fullstack-project
+repo_name: comicodex/fullstack-project
+
+theme:
+   name: readthedocs
+   language: en
+   palette:
+   primary: blue grey
+plugins:
+  - search
+nav:
+  - Introduction: 'index.md'
+  - Documentation: 'documentation.md'
+  - Running the apps: 'running.md'
+  - Training: 'training.md'
+  - Models: 'models.md'
