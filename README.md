@@ -1,7 +1,12 @@
 ## Fullstack Project
 
 ### Introduction
-This is a collaborative team project to put together and deploy a flask application with image classifier models. We started off with a given database of animal images (ants and bees) and build a classifier to properly classify them. We then proceeded to create a small database of random images and built and trained a second model with very good accuracy.
+This is a collaborative team project to put together and deploy a flask application with image classifier models. We started off with a given database of animal images (ants and bees) and build a classifier to properly classify them. We then proceeded to create a small database of random images and built and trained a second model with very good accuracy results. This project was carried out by implementing both front-end development and back-end development skills. For its deployment we used the Flask application.
+
+### Team
+* [Kim](https://github.com/KimberleyTaylor)
+* [Lorenzo](https://github.com/lorenzodemiri)
+* [Agnese](https://github.com/comicodex)
 
 ### Framework used
 * [Pytorch](https://pytorch.org)
